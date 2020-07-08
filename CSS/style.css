@@ -1,0 +1,14 @@
+.bg-image{
+	background-image: url(../img/bg_01.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-top: 64px;
+}
+.container{
+	margin-top: 125px;
+	margin-bottom: 50px;
+}
+footer{
+	color: white;
+
+}
