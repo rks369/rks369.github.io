@@ -2,6 +2,7 @@ import pyttsx3
 import datetime
 import speech_recognition as sr
 import wikipedia
+import webbrowser
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -50,14 +51,26 @@ def wishme():
 if __name__ == "__main__":
     wishme()
 
-    query = takeCommand().lower()
+    while True:
 
-    print(query)
+        querys = takeCommand().lower()
 
-    if 'wikipedia' in query:  # if wikipedia found in the query then this block will be executed
-        speak('Searching Wikipedia...')
-        query = query.replace("wikipedia", "")
-        results = wikipedia.summary(query, sentences=2)
-        speak("According to Wikipedia")
-        print(results)
-        speak(results)
+        if 'wikipedia' or 'look for' in querys:  # if wikipedia found in the query then this block will be executed
+            speak('Searching Wikipedia...')
+            querys = querys.replace("wikipedia", "")
+            querys = querys.replace("look for", "")
+            results = wikipedia.summary(querys, sentences=5)
+            results = results.replace(".", ".\n")
+            speak("According to Wikipedia")
+            print(results)
+            speak(results)
+
+        elif 'youtube' in querys:
+            querys = querys.replace("youtube", "")
+            querys = querys.replace(" ", "+")
+            webbrowser.open("https://www.youtube.com/results?search_query="+querys)
+
+        elif 'google' in querys:
+            querys = querys.replace("google", "")
+            querys = querys.replace(" ", "+")
+            webbrowser.open("https://www.google.com/search?q="+querys)
