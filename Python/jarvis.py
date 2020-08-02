@@ -1,37 +1,38 @@
 import pyttsx3
 import datetime
-import speech_recognition as sr
+import pywhatkit as kitty
+import speech_recognition as kan
 import wikipedia
 import webbrowser
 
-engine = pyttsx3.init('sapi5')
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+jarvis = pyttsx3.init('sapi5')
+voices = jarvis.getProperty('voices')
+jarvis.setProperty('voice', voices[1].id)
 
 
 def speak(audio):
-    engine.say(audio)
-    engine.runAndWait()  # Without this command, speech will not be audible to us.
+    jarvis.say(audio)
+    jarvis.runAndWait()  # Without this command, speech will not be audible to us.
 
 
 def takeCommand():
     # It takes microphone input from the user and returns string output
 
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
+    sun = kan.Recognizer()
+    with kan.Microphone() as source:
         print("Listening...")
-        r.pause_threshold = 1
-        audio = r.listen(source)
+        sun.pause_threshold = 1
+        audio = sun.listen(source)
     try:
         print("Recognizing...")
-        query = r.recognize_google(audio, language='en-in')  # Using google for voice recognition.
-        print(f"User said: {query}\n")  # User query will be printed.
+        command = sun.recognize_google(audio, language='en-in')  # Using google for voice recognition.
+        print(f"User said: {command}\n")  # User query will be printed.
 
     except Exception as e:
         print(e)
         print("Say that again please...")  # Say that again will be printed in case of improper voice
         return "None"  # None string will be returned
-    return query
+    return command
 
 
 def wishme():
@@ -53,24 +54,23 @@ if __name__ == "__main__":
 
     while True:
 
-        querys = takeCommand().lower()
+        commandline = takeCommand().lower()
 
-        if 'wikipedia' or 'look for' in querys:  # if wikipedia found in the query then this block will be executed
+        if 'wikipedia' in commandline:
             speak('Searching Wikipedia...')
-            querys = querys.replace("wikipedia", "")
-            querys = querys.replace("look for", "")
-            results = wikipedia.summary(querys, sentences=5)
+            commandline = commandline.replace("wikipedia", "")
+            results = wikipedia.summary(commandline, sentences=5)
             results = results.replace(".", ".\n")
             speak("According to Wikipedia")
             print(results)
             speak(results)
 
-        elif 'youtube' in querys:
-            querys = querys.replace("youtube", "")
-            querys = querys.replace(" ", "+")
-            webbrowser.open("https://www.youtube.com/results?search_query="+querys)
+        elif 'play' in commandline:
+            commandline = commandline.replace("youtube", "")
+            commandline = commandline.replace(" ", "+")
+            kitty.playonyt(commandline)
 
-        elif 'google' in querys:
-            querys = querys.replace("google", "")
-            querys = querys.replace(" ", "+")
-            webbrowser.open("https://www.google.com/search?q="+querys)
+        elif 'google' in commandline:
+            commandline = commandline.replace("google", "")
+            commandline = commandline.replace(" ", "+")
+            webbrowser.open("https://www.google.com/search?q=" + commandline)
