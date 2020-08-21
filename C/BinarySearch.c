@@ -4,9 +4,9 @@
 
 int main()
 {
-   int first, last, mid, n, i, item, list[100];
+   int Arr[100],n,i,item,first,last,mid,index=-1;
 
-   printf("Enter the size of the list: ");
+   printf("Enter the size of the list:--");
    scanf("%d",&n);
 
    printf("Enter %d integer values in Asscending order!!\n\n", n);
@@ -14,7 +14,7 @@ int main()
    for (i = 0; i < n; i++)
    {
        printf("Enter The %d Element:--",i+1);
-       scanf("%d",&list[i]);
+       scanf("%d",&Arr[i]);
    }
 
 
@@ -25,19 +25,26 @@ int main()
    last = n - 1;
    mid = (first+last)/2;
 
-   while (first <= last) {
-      if (list[mid] < item)
-         first = mid + 1;
-      else if (list[mid] == item) {
-         printf("\nElement found at %d index & %d Position\n",mid,mid+1);
-         break;
+   while (first <= last) 
+      {
+         if (Arr[mid]==item)
+            {
+               index=mid;
+               break;
+            }
+         else if (Arr[mid]>item) 
+            {
+               first=mid+1;
+            }
+         else
+            last = mid-1;
+         mid = (first + last)/2;
       }
-      else
-         last = mid - 1;
-
-      mid = (first + last)/2;
-   }
-   if (first > last)
+   if (index==-1)
       printf("\nElement Not found in the list.\n");
+   else
+      printf("\nElement Found At %d Index And %d Positon!!",index,index+1);
+
+   return 0;
 
 }
