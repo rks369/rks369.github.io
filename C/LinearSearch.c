@@ -1,3 +1,5 @@
+//Linear Search
+
 #include <stdlib.h>
 
 
@@ -25,7 +27,7 @@ int main()
 	if (index == -1)
 		printf("Element is not present in the array") ;
 	else
-		printf( "Element found at position %d",index+1) ;
+		printf( "Element found at position %d",index+1,"\n") ;
 
 	return 0;
 }
