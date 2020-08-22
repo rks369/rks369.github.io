@@ -6,10 +6,10 @@ int main()
 {
    int Arr[100],n,i,item,first,last,mid,index=-1;
 
-   printf("Enter the size of the list:--");
+   printf("Enter the size of the Array (max 100):--");
    scanf("%d",&n);
 
-   printf("Enter %d integer values in Asscending order!!\n\n", n);
+   printf("\nEnter %d integer values in Asscending order!!\n\n", n);
 
    for (i = 0; i < n; i++)
    {
@@ -43,7 +43,7 @@ int main()
    if (index==-1)
       printf("\nElement Not found in the list.\n");
    else
-      printf("\nElement Found At %d Index And %d Positon!!",index,index+1);
+      printf("\nElement Found At %d Index And %d Positon!!\n",index,index+1);
 
    return 0;
 
