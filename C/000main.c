@@ -3,10 +3,10 @@
 int main()
 {
     printf("\n");
-
-    //Code Here
-
-
+    char ans;
+    printf("Do You want to Enter more Element:--");
+      scanf("%c",&ans);
+    printf("%c",ans);
 
     printf("\n\n");
     return 0;
