@@ -1,13 +1,13 @@
 //Linear Search
 
-#include <stdlib.h>
+#include <stdio.h>
 
 
 int main()
 {
 	int arr[100];
 	int n,i,item,index=-1;
-	printf("Enter The Number Of Elements:--");
+	printf("\nEnter The Number Of Elements:--");
 	scanf("%d",&n);
 	for(i=0;i<n;i++)
     {
@@ -25,9 +25,9 @@ int main()
             break;}
     }
 	if (index == -1)
-		printf("Element is not present in the array") ;
+		printf("Element is not present in the array\n") ;
 	else
-		printf( "Element found at position %d",index+1,"\n") ;
+		printf( "Element found at position %d",index+1,"\n\n") ;
 
 	return 0;
 }
