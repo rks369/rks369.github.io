@@ -27,7 +27,7 @@ int main()
 	if (index == -1)
 		printf("Element is not present in the array\n") ;
 	else
-		printf( "Element found at position %d",index+1,"\n\n") ;
+		printf( "Element found at position %d\n\n",index+1) ;
 
 	return 0;
 }

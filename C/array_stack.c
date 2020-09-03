@@ -1,7 +1,7 @@
 #include<stdio.h>
 
-int stack[100]={11,22,33,44,55,66,77,88,};
-int n=100,top = 7,element;
+int stack[100];
+int n=100,top,element;
 
 void push()
 {   
@@ -35,28 +35,45 @@ void pop()
   
 }
 
+void diaplay()
+{
+   printf("\nStack Is:--");
+    for(int i=0;i<=top;i++)
+    {
+        printf(" %d, ",stack[i]);
+    }
+    printf("\n");
+}
 
 int main() 
 {
-  printf("\nArray Stack Befor POP Operation");
-
-   printf("\nStack Is:--");
-    for(int i=0;i<=top;i++)
+  int ans;
+  do
+  {
+    printf("\nMenu:--");
+    printf("\n1.) Push The Element!");
+    printf("\n2.) Pop The Element!");
+    printf("\n3.) Display!");
+    printf("\n4.) Exit");
+    printf("\n\tEnter Your Choice:--");
+    scanf("%d",&ans);
+    switch (ans)
     {
-        printf(" %d, ",stack[i]);
+      case 1:
+        push();
+        break;
+      case 2:
+        pop();
+        break;
+      case 3:
+        diaplay();
+        break;
+      default:
+        printf("\nYou Enter The Wrong Choice!!!\nTry Again");
+        break;
     }
-    printf("\n");
-
-  pop();
+  } while (ans!=4);
   
-  printf("\nArray Stack After POP Operation");
-
-   printf("\nStack Is:--");
-    for(int i=0;i<=top;i++)
-    {
-        printf(" %d, ",stack[i]);
-    }
-    printf("\n");
   
   return 0;
 }
