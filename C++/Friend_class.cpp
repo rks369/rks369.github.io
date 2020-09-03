@@ -7,36 +7,30 @@ class XYZ;
 
 class ABC
     {
-        int x;
+        int x,y;
 
-        friend int sum(ABC,XYZ);
+        friend class XYZ;
 
         public:
 
-        void setdata(int a)
+        void setdata(int a,int b)
             {
                 x=a;
+                y=b;
             }
     };
 
 class XYZ
     {
-        int y;
-
-        friend int sum(ABC,XYZ);
-
         public:
+            int sum(ABC a)
 
-        void setdata(int a)
             {
-                y=a;
+                return a.x+a.y;
             }
     };
 
-int sum(ABC a,XYZ b)
-{
-    return a.x+b.y;
-}
+
 
 int main()
 {   
@@ -45,10 +39,9 @@ int main()
 
     cout<<"\n";
 
-    obj1.setdata(23);
-    obj2.setdata(43);
+    obj1.setdata(23,43);
 
-    cout<<"Sum Is:--"<<sum(obj1,obj2)<<"\n";
+    cout<<"Sum Is:--"<<obj2.sum(obj1)<<"\n";
     
     cout<<"\n";
     return 0;

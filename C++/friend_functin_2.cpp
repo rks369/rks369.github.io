@@ -9,21 +9,21 @@ class ABC
     {
         int x;
 
-        friend int sum(ABC,XYZ);
-
         public:
 
         void setdata(int a)
             {
                 x=a;
             }
+            
+        int sum(XYZ);
     };
 
 class XYZ
     {
         int y;
 
-        friend int sum(ABC,XYZ);
+        friend int ABC :: sum(XYZ);
 
         public:
 
@@ -33,9 +33,9 @@ class XYZ
             }
     };
 
-int sum(ABC a,XYZ b)
+int ABC::sum(XYZ b)
 {
-    return a.x+b.y;
+    return x+b.y;
 }
 
 int main()
@@ -48,7 +48,7 @@ int main()
     obj1.setdata(23);
     obj2.setdata(43);
 
-    cout<<"Sum Is:--"<<sum(obj1,obj2)<<"\n";
+    cout<<"Sum Is:--"<<obj1.sum(obj2)<<"\n";
     
     cout<<"\n";
     return 0;
