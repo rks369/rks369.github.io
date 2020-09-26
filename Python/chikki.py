@@ -4,6 +4,7 @@ import pywhatkit as kitty
 import speech_recognition as kan
 import wikipedia
 import webbrowser
+import psutil
 
 chikki = pyttsx3.init('sapi5')
 voices = chikki.getProperty('voices')
@@ -74,3 +75,8 @@ if __name__ == "__main__":
             commandline = commandline.replace("google", "")
             commandline = commandline.replace(" ", "+")
             webbrowser.open("https://www.google.com/search?q=" + commandline)
+        elif 'battery' in commandline:
+            battery = psutil.sensors_battery()
+            percent = str(battery.percent)
+            speak("Your Device Has Been running On " + percent + "% Battery!!")
+
