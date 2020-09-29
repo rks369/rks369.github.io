@@ -2,54 +2,30 @@
 
 using namespace std;
 
-class ABC;
-class XYZ;
-
-class ABC
-    {
-        int x;
-
-        friend int sum(ABC,XYZ);
-
-        public:
-
-        void setdata(int a)
-            {
-                x=a;
-            }
-    };
-
-class XYZ
-    {
-        int y;
-
-        friend int sum(ABC,XYZ);
-
-        public:
-
-        void setdata(int a)
-            {
-                y=a;
-            }
-    };
-
-int sum(ABC a,XYZ b)
+class Result
 {
-    return a.x+b.y;
+    int marks;
+
+    public:
+        void getmarks(int r)
+            {
+                marks=r;
+            }
+        friend float percentage(Result R);
+};
+
+float percentage(Result R)
+{
+    return R.marks/5;
 }
 
 int main()
 {   
-    ABC obj1;
-    XYZ obj2;
-
     cout<<"\n";
+    Result student;
+    student.getmarks(459);
+    cout<<"Percentage Of Sudent:-- "<<percentage(student)<<" %"<<endl;
 
-    obj1.setdata(23);
-    obj2.setdata(43);
-
-    cout<<"Sum Is:--"<<sum(obj1,obj2)<<"\n";
-    
     cout<<"\n";
     return 0;
 }
