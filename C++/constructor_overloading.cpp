@@ -25,10 +25,6 @@ class complex
         y=imag;
     }
 
-    ~complex()
-    {
-        cout<<"\nDestroctor Is Called!!!\n";
-    }
     friend complex sum(complex,complex);
     friend void show(complex);
 };
@@ -64,21 +60,6 @@ int main()
     show(B);
     cout<<"C= ";
     show(C);
-
-    complex P(2.7,3.5);
-    complex Q(1.6);
-    complex R;
-
-    cout<<"\n";
-
-    R = sum(P,Q);
-
-    cout<<"P= ";
-    show(P);
-    cout<<"Q= ";
-    show(Q);
-    cout<<"R= ";
-    show(R);
     
     cout<<"\n";
     return 0;
