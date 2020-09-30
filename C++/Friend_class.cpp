@@ -39,7 +39,7 @@ int main()
 
     cout<<"\n";
 
-    obj1.setdata(23,43);
+    obj1.setdata(23,56);
 
     cout<<"Sum Is:--"<<obj2.sum(obj1)<<"\n";
     
