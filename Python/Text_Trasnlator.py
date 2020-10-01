@@ -1,4 +1,0 @@
-import trasnlate
-
-
-translator = tra
